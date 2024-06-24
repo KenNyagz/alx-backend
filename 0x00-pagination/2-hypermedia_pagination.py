@@ -49,9 +49,10 @@ class Server:
         '''returns different metadata related to the paginated data'''
         dataset = self.dataset()
         tot_pages = math.ceil(len(self.dataset()) / page_size)
-        dicto = {"page_size": page_size,
+        page_data = self.get_page(page, page_size)
+        dicto = {"page_size": len(page_data),
                  "page": page,
-                 "data": self.get_page(page, page_size),
+                 "data": page_data,
                  "next_page": None if page + 1 > tot_pages else page + 1,
                  "prev_page": None if page - 1 <= 0 else page - 1,
                  "total_page": tot_pages}
