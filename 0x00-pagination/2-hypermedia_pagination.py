@@ -26,7 +26,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> list:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         '''gets specified page'''
         assert isinstance(page, int) and page > 0, "page must be an integer\
                                                     greater than 0"
@@ -45,14 +45,13 @@ class Server:
 
         return (starting_point, end_point)
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         '''returns different metadata related to the paginated data'''
         dataset = self.dataset()
         tot_pages = math.ceil(len(self.dataset()) / page_size)
-        page_data = self.get_page(page, page_size)
-        dicto = {"page_size": len(page_data),
+        dicto = {"page_size": page_size,
                  "page": page,
-                 "data": page_data,
+                 "data": self.get_page(page, page_size),
                  "next_page": None if page + 1 > tot_pages else page + 1,
                  "prev_page": None if page - 1 <= 0 else page - 1,
                  "total_page": tot_pages}
