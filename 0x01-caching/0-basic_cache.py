@@ -2,15 +2,14 @@
 '''
 cache class inheritance
 '''
-#import
 from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
     '''inherits from baseCaching to add more caching functionality'''
     # def __init__(self):
-        # '''constructor method'''
-        # super().__init__()
+    #     '''constructor method'''
+    #     super().__init__()
 
     def put(self, key, item):
         '''Add an item to the cache'''
