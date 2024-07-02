@@ -9,8 +9,9 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def index():
-    render_template('0-index.html')
+    '''render root html page'''
+    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
